@@ -2,29 +2,29 @@ pipeline {
     agent any
 
     stages {
-        stage('Compilation') {
+        stage('Build') {
             steps {
                 script {
-                    echo 'Compiling C++ Source Code...'
-                    sh 'g++ -o PES2UG22CS089_1 main.cpp'  // Adjust filename as necessary
+                    echo 'Building C++ Project...'
+                    sh 'g++ -o PES2UG22CS089-1 main.cpp'  
                 }
             }
         }
 
-        stage('Execution') {
+        stage('Test') {
             steps {
                 script {
-                    echo 'Executing Compiled Program...'
-                    sh './PES2UG22CS089_1'  // Run the compiled binary
+                    echo 'Running Tests...'
+                    sh './PES2UG22CS089-1' 
                 }
             }
         }
 
-        stage('Deployment') {
+        stage('Deploy') {
             steps {
                 script {
-                    echo 'Starting Deployment Process...'
-                    sh 'echo "Application deployed successfully!"'
+                    echo 'Deploying the application...'
+                    sh 'echo "Deployment successful!"'
                 }
             }
         }
@@ -32,8 +32,7 @@ pipeline {
 
     post {
         failure {
-            echo 'Pipeline execution failed. Please check the logs for details.'
+            echo 'Pipeline failed! Please check the logs for errors.'
         }
     }
 }
-
