@@ -15,8 +15,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running Tests...'
-                    sh './PES2UG22CS089_1' 
-                    sh 'exit 1'  // Intentional error to fail the pipeline
+                    sh './PES2UG22CS089_1'  // Execute compiled file
                 }
             }
         }
@@ -34,6 +33,9 @@ pipeline {
     post {
         failure {
             echo 'Pipeline failed! Please check the logs for errors.'
+        }
+        success {
+            echo 'Pipeline executed successfully!'
         }
     }
 }
