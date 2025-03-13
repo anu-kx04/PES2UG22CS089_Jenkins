@@ -2,27 +2,29 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Compilation') {
             steps {
                 script {
-                    echo 'Building C++ Project...'
-                    sh 'g++ -o PES2UG22CS089-1 main.cpp'                 }
-            }
-        }
-
-        stage('Test') {
-            steps {
-                script {
-                    sh './INVALID_COMMAND'  // Execute compiled file
+                    echo 'Compiling C++ Source Code...'
+                    sh 'g++ -o PES2UG22CS089_1 main.cpp'  // Adjust filename as necessary
                 }
             }
         }
 
-        stage('Deploy') {
+        stage('Execution') {
             steps {
                 script {
-                    echo 'Deploying the application...'
-                    sh 'echo "Deployment successful!"'
+                    echo 'Executing Compiled Program...'
+                    sh './PES2UG22CS089_1'  // Run the compiled binary
+                }
+            }
+        }
+
+        stage('Deployment') {
+            steps {
+                script {
+                    echo 'Starting Deployment Process...'
+                    sh 'echo "Application deployed successfully!"'
                 }
             }
         }
@@ -30,7 +32,8 @@ pipeline {
 
     post {
         failure {
-            echo 'Pipeline failed! Please check the logs for errors.'
+            echo 'Pipeline execution failed. Please check the logs for details.'
         }
     }
 }
+
