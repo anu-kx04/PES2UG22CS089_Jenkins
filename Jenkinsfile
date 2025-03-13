@@ -28,8 +28,6 @@ pipeline {
                 }
             }
         }
-    }
-
     post {
         failure {
             echo 'Pipeline failed! Please check the logs for errors.'
