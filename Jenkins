@@ -13,8 +13,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    echo 'Running Tests...'
-                    sh './PES2UG22CS061-1'  // Execute compiled file
+                    sh './INVALID_COMMAND'  // Execute compiled file
                 }
             }
         }
